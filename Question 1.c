@@ -2,34 +2,34 @@
 #include<stdlib.h>
 //#include<unilib.h>
 int n,n1;//process counter
-struct process
+struct process//Stores properties of Process
 {
-int p,bt,at;
+int p,bt,at;//process, burst time, arival time
 int nbt;
 int et;
 }Pro[20];
-int wl[20];
-int t = 0;
+int wl[20];//wait list
+int t = 0;//time
 
-void initialize()
+void initialize()//Initializes all the values
 {
  printf("\nEnter pid in numerics: ");
  printf("\nWith respedtive BT and AT: \n");
  for(int i= 0; i<n; i++)
  {
   printf("Enter pid of process %d: ", i+1);
-  scanf("%d",&Pro[i].p);
+  scanf("%d",&Pro[i].p);//initialize process id
   printf("Enter AT of process %d: ", i+1);
-  scanf("%d",&Pro[i].at);
+  scanf("%d",&Pro[i].at);//initialize arival time
   printf("Enter BT of process %d: ", i+1);
-  scanf("%d",&Pro[i].bt);
+  scanf("%d",&Pro[i].bt);//initialize burst time
  }
  for(int i=0; i<n; i++)
  {
   Pro[i].nbt=Pro[i].bt;
   wl[i] = i;
  }
-int a;
+int a;//sorts waiting list in order
  for(int i=0; i<n-1; i++)
  {
   for(int j=i+1; j<n; j++)
@@ -55,8 +55,8 @@ int a;
  }
 }
 
-void updatewl(int c)
-{
+void updatewl(int c)//updates waiting list after a round 
+{                   //robin opretion
  if(c==0)
  {
   wl[0]=NULL;
@@ -78,7 +78,7 @@ void updatewl(int c)
  }
 }
 
-void run(int tq)
+void run(int tq)//runs round robin with given quantum
 {
  for(int i=0; i<n; i++)
  {
@@ -98,7 +98,7 @@ void run(int tq)
  }
 }
 
-void sjfwl()
+void sjfwl()//sorts waiting list according to shortest job first
 {
   int a;
  for(int i=0; i<n-1; i++)
@@ -126,7 +126,7 @@ void sjfwl()
  }
 }
 
-void runsjf()
+void runsjf()/runs shortest job first
 {
  sjfwl();
  for(int i=0; i<n; i++)
@@ -138,7 +138,7 @@ void runsjf()
 }
 
 
-void show()
+void show()//displays all the output
 {
  for(int i=0; i<n1; i++)
  {
@@ -159,9 +159,9 @@ void main()
  scanf("%d",&n);
  n1 = n;
  initialize();
- run(3);
- run(6);
- runsjf();
+ run(3);//runs round robin with quantum 3
+ run(6);//runs round robin with quantum 6
+ runsjf();//runs processes in accordance with shortest job first
  show();
 
 }
