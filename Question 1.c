@@ -160,7 +160,9 @@ void main()
  n1 = n;
  initialize();
  run(3);//runs round robin with quantum 3
+ show()
  run(6);//runs round robin with quantum 6
+ show()
  runsjf();//runs processes in accordance with shortest job first
  show();
 
