@@ -1,7 +1,7 @@
 # C program to schedule list of process using shortes job first schedulling method
 
 ### Inputs
--Number of processes
+--Number of processes
 -Process IDs
 -Process Arival Times
 -Process brust times
