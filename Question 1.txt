@@ -4,12 +4,12 @@
 int n,n1;//process counter
 struct process//Stores properties of Process
 {
-int p,bt,at;
+int p,bt,at;//process, burst time, arival time
 int nbt;
 int et;
 }Pro[20];
-int wl[20];
-int t = 0;
+int wl[20];//wait list
+int t = 0;//time
 
 void initialize()//Initializes all the values
 {
@@ -18,11 +18,11 @@ void initialize()//Initializes all the values
  for(int i= 0; i<n; i++)
  {
   printf("Enter pid of process %d: ", i+1);
-  scanf("%d",&Pro[i].p);
+  scanf("%d",&Pro[i].p);//initialize process id
   printf("Enter AT of process %d: ", i+1);
-  scanf("%d",&Pro[i].at);
+  scanf("%d",&Pro[i].at);//initialize arival time
   printf("Enter BT of process %d: ", i+1);
-  scanf("%d",&Pro[i].bt);
+  scanf("%d",&Pro[i].bt);//initialize burst time
  }
  for(int i=0; i<n; i++)
  {
@@ -78,7 +78,7 @@ void updatewl(int c)//updates waiting list after a round
  }
 }
 
-void run(int tq)//runs round robin wiyh given quantum
+void run(int tq)//runs round robin with given quantum
 {
  for(int i=0; i<n; i++)
  {
@@ -98,7 +98,7 @@ void run(int tq)//runs round robin wiyh given quantum
  }
 }
 
-void sjfwl()//sorts waiting list according to sjf
+void sjfwl()//sorts waiting list according to shortest job first
 {
   int a;
  for(int i=0; i<n-1; i++)
@@ -126,7 +126,7 @@ void sjfwl()//sorts waiting list according to sjf
  }
 }
 
-void runsjf()/runs sjf
+void runsjf()/runs shortest job first
 {
  sjfwl();
  for(int i=0; i<n; i++)
@@ -159,9 +159,9 @@ void main()
  scanf("%d",&n);
  n1 = n;
  initialize();
- run(3);
- run(6);
- runsjf();
+ run(3);//runs round robin with quantum 3
+ run(6);//runs round robin with quantum 6
+ runsjf();//runs processes in accordance with shortest job first
  show();
 
 }
